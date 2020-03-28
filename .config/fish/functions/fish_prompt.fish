@@ -1,0 +1,1 @@
+/home/onexming/.local/share/omf/themes/will/fish_prompt.fish

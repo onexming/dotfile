@@ -1,0 +1,12 @@
+rofi.modi: drun,window
+rofi.lines: 6
+rofi.matching: fuzzy
+rofi.columns: 3
+rofi.width: 100
+rofi.drun-icon-theme: Pop
+rofi.show-icons: true
+rofi.sidebar-mode: true
+rofi.m: -4
+rofi.theme: andrea
+rofi.dpi: 200
+rofi.kb-custom-2: Super+d
