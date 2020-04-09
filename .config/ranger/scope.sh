@@ -217,7 +217,7 @@ handle_mime() {
         # Text
         text/* | */xml)
             if  command -v ccat &>/dev/null; then
-                ccat --color=always ${FILE_PATH}
+                ccat --color=always ${FILE_PATH} | head -n 50
                 exit 0
             fi
             exit 2;;

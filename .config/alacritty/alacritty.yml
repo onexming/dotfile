@@ -24,9 +24,9 @@ window:
 
 scrolling:
   multiplier: 1
-  auto_scroll: false
+  #  auto_scroll: false
 
-tabspaces: 2
+  #tabspaces: 2
 
 # Font configurations
 font:
@@ -89,7 +89,7 @@ visual_bell:
   animation: EaseOutExpo
   duration: 0
 
-background_opacity: 0.9
+background_opacity: 0.85
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
