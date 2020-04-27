@@ -241,6 +241,7 @@ for_window [class="netease-cloud-music"] floating enable
 for_window [class="dde-file-manager"] floating enable
 for_window [class="feh"] floating enable
 for_window [instance="ranger" class="Alacritty"] floating enable
+for_window [class="Alacritty"] resize set 1280 960
 for_window [instance="alsamixer" class="Alacritty"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="GoldenDict"] floating enable
