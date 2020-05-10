@@ -18,8 +18,8 @@
 #set fish_function_path $fish_function_path "/home/onexming/.local/lib/python3.8/site-packages/powerline/bindings/fish" powerline-setup
 
 # fzf
-set -x FZF_DEFAULT_OPTS '--preview "bat --style=numbers --color=always {} | head -500"'
-set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+# set -x FZF_DEFAULT_OPTS '--preview "bat --style=numbers --color=always {} | head -500"'
+# set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 # set -x FZF_COMPLETION_TRIGGER '**'
 # set -x FZF_TMUX_HEIGHT '80%'
 # set -x FZF_PREVIEW_COMMAND '--preview "bat --style=numbers --color=always {} | head -500"'
