@@ -15,7 +15,6 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Droid Sans 10
 
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Droid Sans 10
@@ -29,6 +28,7 @@ font pango:Droid Sans 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+focus_follows_mouse no
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -93,7 +93,8 @@ bindsym $mod+shift+f fullscreen toggle global
 #bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#＃＃bindsym $mod+Shift+space floating toggle
+bindsym $mod+s floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -216,7 +217,7 @@ bindsym $mod+r mode "resize"
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $fg i3wm.color7 #46ed46
 set_from_resource $bg i3wm.color2 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
@@ -331,10 +332,10 @@ bindsym $mod+shift+Delete exec betterlockscreen -l
 #exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-0 --off --output DVI-1 --off
 
 # autostarted applications
-exec_always --no-startup-id wal -R -n
+# exec_always --no-startup-id wal -R -n
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec --no-startup-id setbg	
-exec --no-startup-id ~/.fehbg
+exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
 exec_always --no-startup-id picom --experimental-backends
 #exec --no-startup id picom -b
 #exec --no-startup-id .config/conky/start_conky
@@ -343,5 +344,4 @@ exec --no-startup-id xset dpms 500
 exec --no-startup-id dunstwal
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd
-
-
+exec --no-startup-id scim -d
