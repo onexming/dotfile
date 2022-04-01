@@ -10,6 +10,7 @@
 #                         
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -45,12 +46,6 @@ bindsym $mod+Tab exec exec rofi -theme themes/appsmenu -show window
 # open empty container
 bindsym $mod+Shift+Return exec i3-msg open
 
-# quickstart applications
-bindsym $mod+w exec exec qutebrowser
-bindsym $mod+e exec exec thunderbird
-#bindsym $mod+f exec exec thunar
-
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -65,10 +60,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -77,10 +72,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+##bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+###bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -88,9 +83,9 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+###bindsym $mod+e layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+q layout toggle split
 
 # toggle tiling / floating
 #＃＃bindsym $mod+Shift+space floating toggle
@@ -104,6 +99,14 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# 自定义
+bindsym $alt+space move scratchpad
+bindsym $mod+shift+space scratchpad show
+bindsym $mod+n [class="obsidian"] scratchpad show
+bindsym $mod+u [title="scratchpad"] scratchpad show
+bindsym $alt+q exec flameshot gui
+
 
 set $workspace1 "1:"
 set $workspace2 "2:"
@@ -129,40 +132,23 @@ bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $mod+Shift+1 move container to workspace $workspace1; workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2; workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3; workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4; workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5; workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6; workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7; workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8; workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9; workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10; workspace $workspace10
+
+# Move workspaces betweeen monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+l move workspace to output right
 
 # open applications on specific workspaces
-assign [class="Chromium"] $workspace1
-assign [class="firefox"] $workspace1
-assign [class="Google-chrome"] $workspace1
-assign [class="Firefox"] $workspace1
-#assign [class="qutebrowser"] $workspace1
-assign [class="Nautilus"] $workspace3
-assign [class="Pcmanfm"] $workspace3
-assign [class="Thunar"] $workspace3
-assign [class="Thunderbird"] $workspace7
-assign [class="Spotify"] $workspace10
-for_window [class="Spotify"] move to workspace $workspace10 
-assign [class="Rhythmbox"] $workspace4
-assign [class="Audacious"] $workspace4
-assign [class="Gnome-mplayer"] $workspace5
-assign [class="Vlc"] $workspace5
-assign [class="Totem"] $workspace5
-#assign [class="MPlayer"] $workspace5
-#assign [class="mpv"] $workspace5
-assign [class="Steam"] $workspace6
-assign [class="Gimp"] $workspace8
-assign [class="Photoshop.exe"] $workspace8
-assign [class="Gthumb"] $workspace8
+###assign [class="Gthumb"] $workspace8
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -276,9 +262,8 @@ for_window [class="Org.gnome.Weather"] floating enable
 for_window [class="Gnome-calendar"] floating enable 
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="feh"] floating enable
-#for_window [class="Connman-gtk"] floating enable
-#for_window [class="qutebrowser"] floating enable
-#for_window [class="cool-retro-term"] resize set 600 740
+for_window [class="obsidian"] floating enable move scratchpad
+for_window [title="scratchpad"] floating enable move scratchpad
 
 # volume control alsa
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
@@ -323,9 +308,9 @@ gaps inner 5
 gaps outer 5
 #smart_gaps on
 #smart_borders on
+floating_minimum_size 100 x 100
 
 # shut down, restart and locking features
-bindsym $mod+Delete exec rofi -modi system:$HOME/.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu
 bindsym $mod+shift+Delete exec betterlockscreen -l
 
 # screensetup
@@ -338,10 +323,18 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
 exec_always --no-startup-id picom --experimental-backends
 #exec --no-startup id picom -b
-#exec --no-startup-id .config/conky/start_conky
 exec --no-startup-id xset dpms 500
 #exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l dim"
 exec --no-startup-id dunstwal
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd
-exec --no-startup-id scim -d
+exec --no-startup-id fcitx -d
+exec --no-startup-id obsidian
+exec --no-startup-id flameshot
+exec --no-startup-id dunst
+exec --no-startup-id blueman-applet
+exec --no-startup-id sleep 20 && kdeconnect-indicator
+exec --no-startup-id sleep 20 && nextcloud
+exec --no-startup-id sleep 3 && alacritty -t scratchpad
+# 配置wifi nmtui
+exec --no-startup-id network-manager-applet

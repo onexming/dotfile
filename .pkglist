@@ -17,6 +17,7 @@ avahi
 b43-fwcutter
 bash
 bluedevil
+blueman
 breeze-gtk
 btrfs-progs
 bzip2
@@ -35,6 +36,8 @@ diffutils
 dmidecode
 dmraid
 dnsmasq
+docker
+docker-compose
 dolphin
 dolphin-plugins
 dosfstools
@@ -48,6 +51,8 @@ emovix
 exa
 exfat-utils
 f2fs-tools
+fcitx-cloudpinyin
+fcitx-configtool
 feh
 ffmpeg
 ffmpegthumbnailer
@@ -60,6 +65,7 @@ firefox
 firefox-i18n-en-us
 firefox-i18n-zh-cn
 fish
+flameshot
 fwupd
 fzf
 gawk
@@ -103,6 +109,7 @@ kaccounts-providers
 kamera
 kate
 kcalc
+kcm-fcitx
 kde-gtk-config
 kdeconnect
 kdegraphics-thumbnailers
@@ -190,6 +197,7 @@ nano-syntax-highlighting
 neofetch
 neovim
 nerd-fonts-terminus
+network-manager-applet
 networkmanager
 networkmanager-openconnect
 networkmanager-openvpn
@@ -197,6 +205,7 @@ networkmanager-pptp
 networkmanager-vpnc
 nextcloud-client
 nfs-utils
+nodejs
 noto-fonts
 noto-fonts-emoji
 nss-mdns
@@ -207,6 +216,7 @@ nvidia-utils
 obsidian
 okular
 onlyoffice-desktopeditors
+opencc
 openresolv
 openssh
 os-prober
@@ -291,6 +301,7 @@ thunderbird-i18n-en-us
 thunderbird-i18n-zh-cn
 timeshift
 timeshift-autosnap-manjaro
+tmux
 transcode
 translate-shell
 trash-cli
