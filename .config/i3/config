@@ -54,28 +54,28 @@ bindsym $mod+l focus right
 # bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+###bindsym $mod+Left focus left
+###bindsym $mod+Down focus down
+###bindsym $mod+Up focus up
+###bindsym $mod+Right focus right
 
-# move focused window
+## move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+###bindsym $mod+Shift+Left move left
+###bindsym $mod+Shift+Down move down
+###bindsym $mod+Shift+Up move up
+###bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-##bindsym $mod+h split h
+### bindsym $alt+h split h
 
 # split in vertical orientation
-###bindsym $mod+v split v
+###bindsym $alt+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -85,7 +85,8 @@ bindsym $mod+shift+f fullscreen toggle global
 # change container layout (stacked, tabbed, toggle split)
 ###bindsym $mod+e layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+q layout toggle split
+bindsym $mod+e layout toggle split
+bindsym $mod+q split toggle
 
 # toggle tiling / floating
 #＃＃bindsym $mod+Shift+space floating toggle
@@ -95,18 +96,18 @@ bindsym $mod+s floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Up focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Down focus child
 
 # 自定义
 bindsym $alt+space move scratchpad
 bindsym $mod+shift+space scratchpad show
 bindsym $mod+n [class="obsidian"] scratchpad show
 bindsym $mod+u [title="scratchpad"] scratchpad show
+bindsym $mod+shift+u exec alacritty -t scratchpad
 bindsym $alt+q exec flameshot gui
-
 
 set $workspace1 "1:"
 set $workspace2 "2:"
@@ -118,6 +119,18 @@ set $workspace7 "7:"
 set $workspace8 "8:"
 set $workspace9 "9:"
 set $workspace10 "10:"
+
+# 将工作空间指定到特定显示器
+workspace $workspace1 output HDMI-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output HDMI-0
+workspace $workspace4 output HDMI-0
+workspace $workspace5 output HDMI-0
+workspace $workspace6 output HDMI-0
+workspace $workspace7 output HDMI-0
+workspace $workspace8 output DVI-I-1
+workspace $workspace9 output DVI-I-1
+workspace $workspace10  output DVI-I-1
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -146,6 +159,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10; workspace $worksp
 # Move workspaces betweeen monitors
 bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+l move workspace to output right
+bindsym $mod+bracketright focus output left
+bindsym $mod+bracketleft focus output right
 
 # open applications on specific workspaces
 ###assign [class="Gthumb"] $workspace8
@@ -262,6 +277,7 @@ for_window [class="Org.gnome.Weather"] floating enable
 for_window [class="Gnome-calendar"] floating enable 
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="Gcolor3"] floating enable
 for_window [class="obsidian"] floating enable move scratchpad
 for_window [title="scratchpad"] floating enable move scratchpad
 
@@ -306,8 +322,8 @@ hide_edge_borders none
 for_window [class="^.*"] border pixel 1
 gaps inner 5
 gaps outer 5
-#smart_gaps on
-#smart_borders on
+smart_gaps on
+smart_borders on
 floating_minimum_size 100 x 100
 
 # shut down, restart and locking features

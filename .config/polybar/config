@@ -19,12 +19,14 @@
 [colors]
 bg = #af03121c
 no-bg = #00000000
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
 ; pywal generated, manually modified
-black		= #03121c
+black		= #4f000000
 black-alt	= #a19c9f
 red		= #386685
-green		= #57738c
-yellow		= #927797
+green		= #4f79f415
+yellow		= #fef905
 blue		= #60939f
 magenta		= #c38ac3
 cyan		= #8ee8c4
@@ -43,20 +45,51 @@ font-3 = Font Awesome 6 Free:style=Regular:pixelsize=12;3
 font-4 = Font Awesome 6 Free:style=Solid:pixelsize=12;3
 font-5 = Font Awesome 6 Brands:pixelsize=12;3
 
+[bar/left]
+locale = zh_CN.UTF-8
+inherit = constants/background
+width = 100%
+height = 30
+
+monitor=DVI-I-1
+
+radius = 15
+
+override-redirect = false
+wm-restack = i3
+
+background = #3feb2754
+foreground = ${colors.white}
+
+;;;modules-left = rofimenu right-angle i3
+modules-left = right-angle i3 right-angle xwindow
+;;;modules-center = xwindow
+;;;modules-center = wlan
+;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
+modules-right = temperature_cpu separator temperature_gpu
 
 [bar/top]
 locale = zh_CN.UTF-8
 inherit = constants/background
 width = 100%
+height = 30
+
+monitor = HDMI-0
+radius = 15
 
 override-redirect = false
 wm-restack = i3
 
-background = ${colors.no-bg}
+background = ${colors.bg}
 foreground = ${colors.white}
+bottom = false
+border-top-size = 0
+border-bottom-size = 0
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.foreground}
 
 ;;;modules-left = rofimenu right-angle i3
-modules-left = right-angle i3 right-angle xwindow
+modules-left = right-angle i3 right-angle empty-space xwindow
 ;;;modules-center = xwindow
 modules-center = wlan
 ;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
@@ -67,8 +100,22 @@ tray-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
 label-foreground = ${colors.cyan}
+
+[module/round-left]
+type = custom/text
+content = %{T3}%{T-}
+content-foreground = #2a2e36
+
+[module/round-right]
+type = custom/text
+content = %{T3}%{T-}
+content-foreground = #2a2e36
+
+[module/empty-space]
+type = custom/text
+content = "  "
 
 [module/i3]
 type = internal/i3
@@ -76,14 +123,23 @@ pin-workspaces = true
 enable-click = true
 enable-scroll = true
 
-label-focused-foreground = ${colors.cyan}
-label-focused-padding = 2
+label-separator = " "
+;;;label-separator-background = #2a2e36
+
+label-focused-foreground = ${colors.yellow}
+;;;label-focused-background = #2a2e36
+label-focused-padding = 1
+label-focused-margin = 0
 
 label-unfocused-foreground = ${colors.black-alt}
-label-unfocused-padding = 2
+;;;label-unfocused-background = #2a2e36
+label-unfocused-padding = 1
+label-unfocused-margin = 0
 
 label-urgent-foreground = ${colors.red}
-label-urgent-padding = 2
+;;;label-urgent-background = #2a2e36
+label-urgent-padding = 1
+label-urgent-margin = 0
 
 
 [module/xbacklight]
@@ -261,5 +317,65 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/temperature_cpu]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+label = CPU: %temperature-c%
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 70
+
+[module/temperature_gpu]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+label = GPU: %temperature-c%
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/pci0000:00/0000:00:06.0/0000:02:00.0/nvme/nvme0/hwmon1/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 70
 
 ; vim:ft=dosini
