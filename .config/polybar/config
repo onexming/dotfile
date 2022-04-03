@@ -58,15 +58,19 @@ radius = 15
 override-redirect = false
 wm-restack = i3
 
-background = #3feb2754
+background = #3fffffff
+;;;background = #3feb2754
 foreground = ${colors.white}
 
 ;;;modules-left = rofimenu right-angle i3
-modules-left = right-angle i3 right-angle xwindow
+modules-left = right-angle i3 
 ;;;modules-center = xwindow
 ;;;modules-center = wlan
 ;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
 modules-right = temperature_cpu separator temperature_gpu
+
+tray-position = center
+tray-padding = 2
 
 [bar/top]
 locale = zh_CN.UTF-8
@@ -81,6 +85,7 @@ override-redirect = false
 wm-restack = i3
 
 background = ${colors.bg}
+;;;background = #3fffffff
 foreground = ${colors.white}
 bottom = false
 border-top-size = 0
@@ -94,9 +99,6 @@ modules-left = right-angle i3 right-angle empty-space xwindow
 modules-center = wlan
 ;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
 modules-right = cpu separator memory separator date separator pulseaudio left-angle
-
-tray-position = right
-tray-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
