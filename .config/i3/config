@@ -121,16 +121,16 @@ set $workspace9 "9:"
 set $workspace10 "10:"
 
 # 将工作空间指定到特定显示器
-workspace $workspace1 output HDMI-0
-workspace $workspace2 output HDMI-0
-workspace $workspace3 output HDMI-0
-workspace $workspace4 output HDMI-0
-workspace $workspace5 output HDMI-0
-workspace $workspace6 output HDMI-0
-workspace $workspace7 output HDMI-0
-workspace $workspace8 output DVI-I-1
-workspace $workspace9 output DVI-I-1
-workspace $workspace10  output DVI-I-1
+workspace $workspace1 output DP-0
+workspace $workspace2 output DP-0
+workspace $workspace3 output DP-0
+workspace $workspace4 output DP-0
+workspace $workspace5 output DP-0
+workspace $workspace6 output DP-0
+workspace $workspace7 output DP-0
+workspace $workspace8 output HDMI-0
+workspace $workspace9 output HDMI-0
+workspace $workspace10  output HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -161,6 +161,8 @@ bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+l move workspace to output right
 bindsym $mod+bracketright focus output left
 bindsym $mod+bracketleft focus output right
+bindsym $mod+grave workspace back_and_forth
+bindsym $mod+ctrl+s sticky toggle
 
 # open applications on specific workspaces
 ###assign [class="Gthumb"] $workspace8
@@ -218,15 +220,16 @@ bindsym $mod+r mode "resize"
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #46ed46
+new_window normal
+set_from_resource $fg i3wm.color7 #ee4c2c
 set_from_resource $bg i3wm.color2 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $fg     $fg     $fg  $fg       $fg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.focused          $fg     $ffffff   $fg $fg       $fg
+client.focused_inactive $bg     $ffffff   $bg $bg       $bg
+client.unfocused        $bg     $ffffff   $bg $bg       $bg
+client.urgent           $bg     $ffffff   $bg $bg       $bg
+client.placeholder      $bg     $ffffff   $bg $bg       $bg
 
 client.background       $bg
 
@@ -278,6 +281,11 @@ for_window [class="Gnome-calendar"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gcolor3"] floating enable
+for_window [class="dolphin"] floating enable
+for_window [class="gwenview"] floating enable
+for_window [class="sqlectron"] floating enable
+for_window [class="Nextcloud"] floating enable
+for_window [class="weixin"] floating enable
 for_window [class="obsidian"] floating enable move scratchpad
 for_window [title="scratchpad"] floating enable move scratchpad
 
@@ -319,15 +327,15 @@ new_float normal 1
 hide_edge_borders none
 
 # i3 gaps
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 gaps inner 5
-gaps outer 5
+gaps outer -2
 smart_gaps on
 smart_borders on
-floating_minimum_size 100 x 100
+floating_minimum_size 800 x 100
 
 # shut down, restart and locking features
-bindsym $mod+shift+Delete exec betterlockscreen -l
+# bindsym $mod+shift+Delete exec betterlockscreen -l
 
 # screensetup
 #exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-0 --off --output DVI-1 --off
@@ -336,7 +344,8 @@ bindsym $mod+shift+Delete exec betterlockscreen -l
 # exec_always --no-startup-id wal -R -n
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec --no-startup-id setbg	
-exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
+#exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
+exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-center /home/onx/Templates/Lover/Pictures/wallpapers/86cc9b35d36819d0bb4e33e5e509ad7e.jpeg  --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/5fd990a8ac56b58a005ad3e6e5c66c6a.png 
 exec_always --no-startup-id picom --experimental-backends
 #exec --no-startup id picom -b
 exec --no-startup-id xset dpms 500
@@ -354,3 +363,5 @@ exec --no-startup-id sleep 20 && nextcloud
 exec --no-startup-id sleep 3 && alacritty -t scratchpad
 # 配置wifi nmtui
 exec --no-startup-id network-manager-applet
+exec --no-startup-id solaar --window=hide
+exec --no-startup-id nm-applet

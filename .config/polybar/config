@@ -50,17 +50,20 @@ locale = zh_CN.UTF-8
 inherit = constants/background
 width = 100%
 height = 30
+border-top-size = 8
+border-bottom-size = 8
 
-monitor=DVI-I-1
+monitor=HDMI-0
 
 radius = 15
 
 override-redirect = false
 wm-restack = i3
 
-background = #3fffffff
+background = #2f61354c
 ;;;background = #3feb2754
-foreground = ${colors.white}
+foreground = #ffffff
+;;;foreground = ${colors.white}
 
 ;;;modules-left = rofimenu right-angle i3
 modules-left = right-angle i3 
@@ -78,18 +81,19 @@ inherit = constants/background
 width = 100%
 height = 30
 
-monitor = HDMI-0
+monitor = DP-0
 radius = 15
 
 override-redirect = false
 wm-restack = i3
 
 background = ${colors.bg}
+;;;background = #3feb2754
 ;;;background = #3fffffff
 foreground = ${colors.white}
 bottom = false
-border-top-size = 0
-border-bottom-size = 0
+border-top-size = 2
+border-bottom-size = 2
 border-top-color = ${colors.background}
 border-bottom-color = ${colors.foreground}
 
@@ -326,6 +330,7 @@ type = internal/temperature
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 1
+format = <label>
 
 label = CPU: %temperature-c%
 
@@ -342,42 +347,17 @@ thermal-zone = 0
 ; Default reverts to thermal zone setting
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
 
-; Base temperature for where to start the ramp (in degrees celsius)
-; Default: 0
-base-temperature = 20
-
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
-warn-temperature = 70
+warn-temperature = 80
+label-warn = CPU %temperature-c%
+label-warn-foreground = #f00
 
 [module/temperature_gpu]
-type = internal/temperature
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 1
-
-label = GPU: %temperature-c%
-
-; Thermal zone to use
-; To list all the zone types, run 
-; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
-; Default: 0
-thermal-zone = 0
-
-; Full path of temperature sysfs path
-; Use `sensors` to find preferred temperature source, then run
-; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-; to find path to desired file
-; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/pci0000:00/0000:00:06.0/0000:02:00.0/nvme/nvme0/hwmon1/temp1_input
-
-; Base temperature for where to start the ramp (in degrees celsius)
-; Default: 0
-base-temperature = 20
-
-; Threshold temperature to display warning label (in degrees celsius)
-; Default: 80
-warn-temperature = 70
+type = custom/script
+tail = true
+exec-if = nvidia-smi
+exec = nvidia-smi --loop=1 --query-gpu=temperature.gpu,utilization.gpu,utilization.memory --format=csv,noheader,nounits | sed -ur 's|([[:digit:]]+)[^[:digit:]]*([[:digit:]]+)[^[:digit:]]*([[:digit:]]+)|GPU: \1°|g'
+;;;exec = nvidia-smi --loop=1 --query-gpu=temperature.gpu,utilization.gpu,utilization.memory --format=csv,noheader,nounits | sed -ur 's|([[:digit:]]+)[^[:digit:]]*([[:digit:]]+)[^[:digit:]]*([[:digit:]]+)|GPU \2% \3% \1°|g'
 
 ; vim:ft=dosini
