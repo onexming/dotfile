@@ -32,7 +32,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -106,7 +106,7 @@ bindsym $alt+space move scratchpad
 bindsym $mod+shift+space scratchpad show
 bindsym $mod+n [class="obsidian"] scratchpad show
 bindsym $mod+u [title="scratchpad"] scratchpad show
-bindsym $mod+shift+u exec alacritty -t scratchpad
+bindsym $mod+shift+u exec kitty --title scratchpad
 bindsym $alt+q exec flameshot gui
 
 set $workspace1 "1:"
@@ -345,23 +345,25 @@ floating_minimum_size 800 x 100
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec --no-startup-id setbg	
 #exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
-exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-center /home/onx/Templates/Lover/Pictures/wallpapers/86cc9b35d36819d0bb4e33e5e509ad7e.jpeg  --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/5fd990a8ac56b58a005ad3e6e5c66c6a.png 
+exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/wallhaven-lmlg6q.jpg --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/222.jpg
 exec_always --no-startup-id picom --experimental-backends
 #exec --no-startup id picom -b
 exec --no-startup-id xset dpms 500
 #exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l dim"
 exec --no-startup-id dunstwal
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd
-exec --no-startup-id fcitx -d
+exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id obsidian
 exec --no-startup-id flameshot
 exec --no-startup-id dunst
 exec --no-startup-id blueman-applet
 exec --no-startup-id sleep 20 && kdeconnect-indicator
 exec --no-startup-id sleep 20 && nextcloud
-exec --no-startup-id sleep 3 && alacritty -t scratchpad
+exec --no-startup-id sleep 3 && kitty --title scratchpad
 # 配置wifi nmtui
 exec --no-startup-id network-manager-applet
-exec --no-startup-id solaar --window=hide
+exec --no-startup-id sleep 4 && solaar --window=hide
 exec --no-startup-id nm-applet
+exec --no-startup-id sleep 10 && pasystray
