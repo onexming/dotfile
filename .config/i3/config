@@ -286,6 +286,7 @@ for_window [class="gwenview"] floating enable
 for_window [class="sqlectron"] floating enable
 for_window [class="Nextcloud"] floating enable
 for_window [class="weixin"] floating enable
+for_window [class="wemeetapp"] floating enable
 for_window [class="obsidian"] floating enable move scratchpad
 for_window [title="scratchpad"] floating enable move scratchpad
 
