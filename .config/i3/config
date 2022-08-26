@@ -32,7 +32,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -105,8 +105,8 @@ bindsym $mod+Down focus child
 bindsym $alt+space move scratchpad
 bindsym $mod+shift+space scratchpad show
 bindsym $mod+n [class="obsidian"] scratchpad show
-bindsym $mod+u [title="scratchpad"] scratchpad show
-bindsym $mod+shift+u exec kitty --title scratchpad
+bindsym $mod+u [class="scratchpad"] scratchpad show
+bindsym $mod+shift+u exec wezterm start --class "scratchpad"
 bindsym $alt+q exec flameshot gui
 
 set $workspace1 "1:"
@@ -287,8 +287,10 @@ for_window [class="sqlectron"] floating enable
 for_window [class="Nextcloud"] floating enable
 for_window [class="weixin"] floating enable
 for_window [class="wemeetapp"] floating enable
+for_window [class="ij-ImageJ"] floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [class="obsidian"] floating enable move scratchpad
-for_window [title="scratchpad"] floating enable move scratchpad
+for_window [class="scratchpad"] floating enable move scratchpad
 
 # volume control alsa
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
@@ -301,7 +303,7 @@ for_window [title="scratchpad"] floating enable move scratchpad
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # volume amixer
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ aaa
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ 
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- 
 
 # granular volume control
@@ -330,10 +332,10 @@ hide_edge_borders none
 # i3 gaps
 for_window [class="^.*"] border pixel 2
 gaps inner 5
-gaps outer -2
+gaps outer 0
 smart_gaps on
 smart_borders on
-floating_minimum_size 800 x 100
+#floating_minimum_size 800 x 100
 
 # shut down, restart and locking features
 # bindsym $mod+shift+Delete exec betterlockscreen -l
@@ -362,7 +364,7 @@ exec --no-startup-id dunst
 exec --no-startup-id blueman-applet
 exec --no-startup-id sleep 20 && kdeconnect-indicator
 exec --no-startup-id sleep 20 && nextcloud
-exec --no-startup-id sleep 3 && kitty --title scratchpad
+exec --no-startup-id sleep 3 && wezterm start --class "scratchpad"
 # 配置wifi nmtui
 exec --no-startup-id network-manager-applet
 exec --no-startup-id sleep 4 && solaar --window=hide

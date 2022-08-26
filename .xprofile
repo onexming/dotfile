@@ -3,4 +3,9 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export GLFW_IM_MODULE=ibus
 export TERMINAL=/usr/bin/alacritty
-export PATH=$PATH:/opt/cuda/bin
+export PATH=$PATH:/opt/cuda/bin:/home/onx/.local/bin
+# git debug
+#export GIT_TRACE_PACKET=1
+#export GIT_TRACE=1
+#export GIT_CURL_VERBOSE=1
+export VISUAL=/usr/bin/nvim

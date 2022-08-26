@@ -12,4 +12,6 @@ set -g -x TERMINFO /usr/share/terminfo
 eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
+bind -M insert \cf "eval (__fzfcmd) -q '(commandline)' | read -l result; and xdg-open \$result"
 starship init fish | source
+
