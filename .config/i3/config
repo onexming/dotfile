@@ -41,7 +41,7 @@ bindsym $mod+BackSpace kill
 bindsym $mod+d exec $HOME/.config/rofi/scripts/appsmenu.sh
 
 # start rofi (window mode)
-bindsym $mod+Tab exec exec rofi -theme themes/appsmenu -show window
+bindsym $mod+Tab exec rofi -theme themes/appsmenu -show window
 
 # open empty container
 bindsym $mod+Shift+Return exec i3-msg open
@@ -266,6 +266,7 @@ for_window [class="Gzdoom"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Pavucontrol"] floating enable
 for_window [class="FS-UAE Launcher 2.8.3 (Not logged in)"] floating enable
+for_window [class="koodo-reader"] floating enable
 for_window [class="Nm-connection-editor"] floating enable 
 for_window [class="MPlayer"] floating enable
 for_window [class="mpv"] floating enable
@@ -348,7 +349,8 @@ smart_borders on
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec --no-startup-id setbg	
 #exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
-exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/wallhaven-lmlg6q.jpg --bg-fill /home/onx/Templates/Lover/Pictures/wallpapers/222.jpg
+#exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-9mj7vk.jpg --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-lmlg6q.jpg
+exec --no-startup-id feh --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-9mj7vk.jpg 
 exec_always --no-startup-id picom --experimental-backends
 #exec --no-startup id picom -b
 exec --no-startup-id xset dpms 500
@@ -370,3 +372,4 @@ exec --no-startup-id network-manager-applet
 exec --no-startup-id sleep 4 && solaar --window=hide
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 10 && pasystray
+

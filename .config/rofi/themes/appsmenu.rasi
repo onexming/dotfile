@@ -1,3 +1,4 @@
+/* vim:ft=css */
 configuration {
 	/* Override config */
 	modi: "drun,window,system:~/.config/rofi/scripts/powermenu.sh";
@@ -6,21 +7,25 @@ configuration {
 }
 
 * {
-  transparency: "real";
-background-color: transparent;
- /* background-color: #2f343f; */
-  window-border: #676E7D;
-  foreground: #eeeeee;
-  selected-normal-background: #5294e290;  
-  spacing: 0;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  font: "RobotoMono Nerd Font";
-  text-color: @text;
+	transparency: "real";
+	background-color: transparent;
+	/* background-color: #2f343f; */
+	window-border: #676E7D;
+	foreground: #eeeeee;
+	selected-normal-background: #5294e290;
+	spacing: 0;
+	text: #dfdfdf;
+	text-alt: #b2b2b2;
+	font: "RobotoMono Nerd Font";
+	text-color: @text;
+	secondary: @text;
+	urgency: @text;
+	background: rgba ( 0, 0, 0, 0 % );
+	primary: @text;
 }
 
 window {
-        background-color: rgba(0, 0, 0, 60%);
+	background-color: rgba(0, 0, 0, 60%);
 	width: 600;
 	height: 40%;
 	padding: 1%;
@@ -33,7 +38,7 @@ window {
 
 mainbox {
 	//margin: 15% 25%;
-	children: [ inputbar, message, listview, wrapper-prompt ];
+	children: [ inputbar, message, listview, wrapper-prompt];
 }
 
 inputbar {
@@ -99,28 +104,34 @@ element selected {
 }
 
 /* Element normal */
-element normal.normal, element alternate.normal {
+element normal.normal,
+element alternate.normal {
 	background-color: @background;
 	text-color: @foreground;
 }
+
 element selected.normal {
 	border-color: @foreground;
 	text-color: @foreground;
 }
 
 /* Element active */
-element normal.active, element alternate.active {
+element normal.active,
+element alternate.active {
 	text-color: @secondary;
 }
+
 element selected.active {
 	border-color: @secondary;
 	text-color: @secondary;
 }
 
 /* Element urgent */
-element normal.urgent, element alternate.urgent {
+element normal.urgent,
+element alternate.urgent {
 	text-color: @urgency;
 }
+
 element selected.urgent {
 	border-color: @urgency;
 	text-color: @urgency;
@@ -129,7 +140,7 @@ element selected.urgent {
 wrapper-prompt {
 	expand: false;
 	orientation: horizontal;
-	children: [ dummy, mode-switcher ];
+	children: [ dummy, mode-switcher];
 }
 
 dummy {
