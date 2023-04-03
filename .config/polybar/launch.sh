@@ -4,11 +4,11 @@ killall -q polybar
 
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-#polybar -rq top &
+polybar -rq top &
 
-#polybar -rq left &
+polybar -rq left &
 
-polybar -rq all &
+#polybar -q all &
 
 echo "Polybar launched..."
 
