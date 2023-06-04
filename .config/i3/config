@@ -131,9 +131,9 @@ workspace $workspace4 output DP-4
 workspace $workspace5 output DP-4
 workspace $workspace6 output DP-4
 workspace $workspace7 output DP-4
-workspace $workspace8 output DP-2
-workspace $workspace9 output DP-2
-workspace $workspace10  output DP-2
+workspace $workspace8 output DP-4
+workspace $workspace9 output DP-4
+workspace $workspace10  output DP-4
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -355,7 +355,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec --no-startup-id setbg	
 #exec --no-startup-id ~/.screenlayout/home_only.sh
 #exec --no-startup-id ~/.screenlayout/home.sh && ~/.fehbg
-exec --no-startup-id ~/.screenlayout/home_video.sh && ~/.fehbg
+#exec --no-startup-id ~/.screenlayout/home_video.sh && ~/.fehbg
+exec --no-startup-id  ~/.fehbg
 #exec --no-startup-id ~/.screenlayout/home.sh && feh --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-9mj7vk.jpg --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-lmlg6q.jpg
 #exec --no-startup-id feh --bg-fill /home/onx/Templates/Lover/Pictures/Cloud_Picture/wallhaven-9mj7vk.jpg 
 #exec_always --no-startup-id picom --experimental-backends

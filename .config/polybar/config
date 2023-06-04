@@ -103,7 +103,7 @@ modules-left = right-angle i3 right-angle empty-space xwindow
 modules-center = wlan
 ;;modules-center = eth
 ;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
-modules-right = cpu separator memory separator date separator pulseaudio left-angle
+modules-right =  cpu separator memory separator date separator pulseaudio left-angle
 
 tray-position = right
 tray-padding = 2
@@ -136,7 +136,8 @@ modules-left = right-angle i3 right-angle empty-space xwindow
 modules-center = wlan
 ;;modules-center = eth
 ;;;modules-right = cpu separator memory separator date separator pulseaudio separator powermenu
-modules-right = cpu separator memory separator date separator pulseaudio left-angle
+modules-right = temperature_cpu separator temperature_gpu separator cpu separator memory separator date separator pulseaudio left-angle
+tray-position = right
 
 [module/xwindow]
 type = internal/xwindow
